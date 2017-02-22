@@ -8,33 +8,33 @@ import java.io.InputStreamReader;
  * Created by bogdan on 2/20/2017.
  */
 public class QuadraticEquation {
+    static int count = 1;
     //Input valid value
     private static double inputMult () throws IOException{
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         boolean isExit=false;
         String s;
+        //work until input valid value
         do {
-            if (isExit)
-                System.out.println("Error! Please enter double value!");
             s = reader.readLine();
-            if (doubleCheck(s)){
+            if (doubleCheck(s))
                 return Double.parseDouble(s);
-            }
-            else {
-                System.out.println("Error! Please enter double value!");
-                s = reader.readLine();
-                isExit = true;
-            }
-        } while (isExit);
+        } while (!isExit);
         return Double.parseDouble(s);
     }
     //checks for valid value
     private static boolean doubleCheck(String s){
         try {
-            Double.parseDouble(s);
+            double x =  Double.parseDouble(s);
+            if (x==0.0 && count==1)
+            {
+                System.out.println("Division by zero! Please enter double value which not equal zero!");
+                return false;
+            }
             return true;
         }
         catch (NumberFormatException e){
+            System.out.println("Error! Please enter double value!");
             return false;
         }
     }
@@ -43,6 +43,7 @@ public class QuadraticEquation {
         System.out.println("Please enter coefficients(a, b, c) in double value for quadratic equation ax*x+bx+c=0");
         System.out.print("a= ");
         double a = inputMult();
+        count--;
         System.out.print("b= ");
         double b = inputMult();
         System.out.print("c= ");

@@ -1,31 +1,31 @@
 package week2;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by bogdan on 3/4/2017.
  */
 public class Solver {
-    //private Memory memorySell;
+    private RootsStorage rootsStorageCell = new RootsStorage();
 
-    public void readAndSolve(List<double[]> list){
+    public void solveAndWrite(List<double[]> list){
         double[] arr;
 
         for (int i = 0; i < list.size(); i++) {
             arr = list.get(i);
-            System.out.print("Equation "+i+": ");
+            //System.out.print("Equation "+i+": ");
             if (arr.length==3){
+                rootsStorageCell.addRoots(i,solveQuadraticEquation(arr[0],arr[1],arr[2]));
                 //solveQuadraticEquation(arr[0],arr[1],arr[2]);
-                System.out.println(Arrays.toString(solveQuadraticEquation(arr[0],arr[1],arr[2])));
+                //System.out.println(Arrays.toString(solveQuadraticEquation(arr[0],arr[1],arr[2])));
             }
             if (arr.length==2){
+                rootsStorageCell.addRoots(i,solveLinearEquation(arr[0],arr[1]));
                 //solveLinearEquation(arr[0],arr[1]);
-                System.out.println(Arrays.toString(solveLinearEquation(arr[0],arr[1])));
+                //System.out.println(Arrays.toString(solveLinearEquation(arr[0],arr[1])));
             }
             if (arr.length==0)
-                //TODO: need fix this for later operations
-                System.out.println("Invalid input");
+                rootsStorageCell.addInvalidEquation(i);
         }
 
     }
@@ -58,16 +58,26 @@ public class Solver {
     private double[] solveLinearEquation(double a, double b){
         double[] linRoot = {(0-b)/a};
         return linRoot;
-
     }
 
     //only for test
     public static void main(String[] args) {
         Reader reader = new Reader();
         Transformer transformer = new Transformer();
-        transformer.transform(reader.readFromFile("src/week2/data.txt"));
+        List<String> listOfEquation = reader.readFromFile("src/week2/data.txt");
+        transformer.transform(listOfEquation);
         Solver solver = new Solver();
-        solver.readAndSolve(transformer.getTransformedFile());
+        solver.solveAndWrite(transformer.getTransformedFile());
+        solver.rootsStorageCell.sortRoots();
+        solver.rootsStorageCell.printListOfRoots(solver.rootsStorageCell.getListOfSortedRoots());
+        System.out.print("Max root: "+solver.rootsStorageCell.getMaxRoot());
+        System.out.println(" from this equation: "+listOfEquation.get((int)solver.rootsStorageCell.getNumOfEquationWithMaxRoot()));
+        System.out.print("Min root: "+solver.rootsStorageCell.getMinRoot());
+        System.out.println(" from this equation: "+listOfEquation.get((int)solver.rootsStorageCell.getNumOfEquationWithMinRoot()));
+        solver.rootsStorageCell.printListOfNullRoots(listOfEquation);
+        /*solver.rootsStorageCell.printListOfNullRoots();
+        solver.rootsStorageCell.printListOfInvalidEquation();*/
+
     }
 
 }

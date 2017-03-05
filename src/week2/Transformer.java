@@ -64,7 +64,6 @@ public class Transformer {
             else
                 transformedFile.add(new double[0]);
         }
-
     }
 
     //// TODO: check plus or minus
@@ -108,6 +107,7 @@ public class Transformer {
         printTransformedFile();
         return super.toString();
     }
+
     private void printTransformedFile() {
         for (int i = 0; i < transformedFile.size(); i++) {
             System.out.print("Sell_"+i+" ");

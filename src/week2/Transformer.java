@@ -67,7 +67,7 @@ public class Transformer {
 
     }
 
-    //TODO: check plus or minus
+    //// TODO: check plus or minus
     private boolean isQuadraticEquation(String s){
         int count =0;
         if (s.contains("x^2"))
@@ -115,6 +115,7 @@ public class Transformer {
         }
     }
 
+    //only for test
     public static void main(String[] args) {
         Reader reader = new Reader();
         Transformer transformer = new Transformer();

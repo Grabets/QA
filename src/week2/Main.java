@@ -10,7 +10,6 @@ public class Main {
         Reader reader = new Reader();
         Transformer transform = new Transformer();
         List<String> list = reader.readFromFile("src/week2/data.txt");
-        System.out.println(list.toString());
         transform.transform(list);
         transform.toString();
     }

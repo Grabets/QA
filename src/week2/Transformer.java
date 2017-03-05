@@ -6,6 +6,9 @@ import java.util.List;
 
 /**
  * Created by bogdan on 3/4/2017.
+ * This class check and transform String lines which include quadratic, linear and invalid equation.
+ * The result of the work this class is creation arrays of double save which collect in List<double[]>.
+ * For example: if quadratic then [a,b,c], linear [a,b] and if invalid equation we have null array: []
  */
 public class Transformer {
     private List<double[]> transformedFile;
@@ -23,7 +26,6 @@ public class Transformer {
             temp="";
             if (isQuadraticEquation(s)){
                 //TODO: check if s.length() < 4
-
                 while (j<=s.length()-4){
                     if (s.charAt(j)!=' ' && s.charAt(j)!='\n'){
                         temp+=s.charAt(j);
@@ -66,7 +68,7 @@ public class Transformer {
         }
     }
 
-    //// TODO: check plus or minus
+    //// TODO: check plus or minus availability
     private boolean isQuadraticEquation(String s){
         int count =0;
         if (s.contains("x^2"))
@@ -113,13 +115,5 @@ public class Transformer {
             System.out.print("Sell_"+i+" ");
             System.out.println(Arrays.toString(transformedFile.get(i)));
         }
-    }
-
-    //only for test
-    public static void main(String[] args) {
-        Reader reader = new Reader();
-        Transformer transformer = new Transformer();
-        transformer.transform(reader.readFromFile("src/week2/data.txt"));
-        transformer.printTransformedFile();
     }
 }

@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 
 /**
  * Created by bogdan on 3/4/2017.
+ *
+ * This class read from file lines and writes into ArrayList type variable
  */
 public class Reader {
     public List<String> readFromFile (String fileName){

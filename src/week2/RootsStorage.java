@@ -2,11 +2,13 @@ package week2;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by bogdan on 3/4/2017.
+ * The main task of this class is storage all kind of roots, as normal root, sorted roots,
+ * also num of equation which haven't real roots and num of lines which failed to recognize as equation
+ * This class has relationship only with solver class.
  */
 public class RootsStorage {
     private List<double[]> listOfRoots;
@@ -118,19 +120,6 @@ public class RootsStorage {
         this.listOfRoots = new ArrayList<>();
         this.listOfNullRoots = new ArrayList<>();
         this.listOfInvalidEquation = new ArrayList<>();
-        //this.listOfSortedRoots = new ArrayList<>();
     }
-    //only for test
-    public static void main(String[] args) {
 
-        List<Integer> list = new LinkedList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        list.add(4);
-        list.add(5);
-        list.set(1,0);
-        System.out.println(list.toString());
-
-    }
 }

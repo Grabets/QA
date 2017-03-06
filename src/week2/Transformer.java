@@ -17,15 +17,14 @@ public class Transformer {
 
         for (int i=0; i<stringList.size();i++)
         {
-            //TODO: wrap in try-catch block
             ArrayList<String> list = new ArrayList<>();
             String s, temp;
             int j;
             s= stringList.get(i);
             j = 0;
             temp="";
+            //If line is quadratic equation then split to simple parts
             if (isQuadraticEquation(s)){
-                //TODO: check if s.length() < 4
                 while (j<=s.length()-4){
                     if (s.charAt(j)!=' ' && s.charAt(j)!='\n'){
                         temp+=s.charAt(j);
@@ -36,17 +35,24 @@ public class Transformer {
                     }
                     j++;
                 }
-                double a,b,c;
-                a = Double.parseDouble(list.get(0).replace("x^2",""));
-                b = Double.parseDouble(list.get(1)+list.get(2).replace("x",""));
-                c = Double.parseDouble(list.get(3)+list.get(4));
-                double[] arr = {a,b,c};
-                transformedFile.add(arr);
+                //check for availability + or -. If true then convert to double
+                if (isContainsPlusOrMinus(list.get(1),list.get(3))){
+                    double a,b,c;
+                    a = Double.parseDouble(list.get(0).replace("x^2",""));
+                    b = Double.parseDouble(list.get(1)+list.get(2).replace("x",""));
+                    c = Double.parseDouble(list.get(3)+list.get(4));
+                    double[] arr = {a,b,c};
+                    transformedFile.add(arr);
+                }
+                else{
+                    transformedFile.add(new double[0]);
+                }
             }
             else
                 if (isLinearEquation(s)){
                 temp="";
                 j=0;
+                    //Split to simple parts if line is linear equation.
                 while (j<=s.length()-4){
                     if (s.charAt(j)!=' ' && s.charAt(j)!='\n'){
                         temp+=s.charAt(j);
@@ -57,18 +63,35 @@ public class Transformer {
                     }
                     j++;
                 }
-                double a,b;
-                a = Double.parseDouble(list.get(0).replace("x",""));
-                b = Double.parseDouble(list.get(1)+list.get(2));
-                double[] arr = {a,b};
-                transformedFile.add(arr);
+                    //check for availability + or -. If true then convert to double
+                if (isContainsPlusOrMinus(list.get(1))){
+                    double a,b;
+                    a = Double.parseDouble(list.get(0).replace("x",""));
+                    b = Double.parseDouble(list.get(1)+list.get(2));
+                    double[] arr = {a,b};
+                    transformedFile.add(arr);
+                }
+                else
+                    transformedFile.add(new double[0]);
             }
             else
                 transformedFile.add(new double[0]);
         }
     }
 
-    //// TODO: check plus or minus availability
+    private boolean isContainsPlusOrMinus (String c){
+        if ("-".equals(c) || "+".equals(c))
+            return true;
+        return false;
+    }
+
+    private boolean isContainsPlusOrMinus (String b, String c){
+        if ("-".equals(b) || "+".equals(b))
+            if ("-".equals(c) || "+".equals(c))
+                return true;
+        return false;
+    }
+
     private boolean isQuadraticEquation(String s){
         int count =0;
         if (s.contains("x^2"))
@@ -88,7 +111,7 @@ public class Transformer {
                 count++;
         }
         if (count==4 && s.contains(" ") && s.contains("x ") && s.substring(s.length()-4,s.length()).equals(" = 0"))
-            return true;
+                return true;
         return false;
     }
 
@@ -98,10 +121,6 @@ public class Transformer {
 
     public List<double[]> getTransformedFile() {
         return transformedFile;
-    }
-
-    private void setTransformedFile(List<double[]> transformedFile) {
-        this.transformedFile = transformedFile;
     }
 
     @Override

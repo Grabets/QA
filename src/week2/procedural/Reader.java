@@ -1,4 +1,4 @@
-package week2;
+package week2.procedural;
 
 import java.io.IOException;
 import java.nio.file.Files;

@@ -29,3 +29,37 @@ for + and - check
 -2x + 29 = 0
 
 фx^2 -1x + a8 = 0
+
+
+
+Line 0 : [2.0, -2.0]
+Line 1 : [169.0]
+Line 2 : invalid string
+Line 3 : [2.229640102611531, -2.354640102611531]
+Line 4 : invalid string
+Line 5 : [4.0, -4.0]
+Line 6 : null
+Line 7 : invalid string
+Line 8 : null
+Line 9 : invalid string
+Line 10 : null
+Line 11 : invalid string
+Line 12 : invalid string
+Line 13 : [3.0, -3.0]
+Line 14 : [0.3333333333333333, 0.0]
+Line 15 : [9.255628917943215, -9.255628917943215]
+Line 16 : [5.883079409898352, -5.8830794148830625]
+Line 17 : invalid string
+Line 18 : invalid string
+Line 19 : null
+Line 20 : invalid string
+Line 21 : null
+Line 22 : invalid string
+Line 23 : invalid string
+Line 24 : invalid string
+Line 25 : invalid string
+Line 26 : invalid string
+Line 27 : invalid string
+Line 28 : null
+Line 29 : invalid string
+Line 30 : invalid string

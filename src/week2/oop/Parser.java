@@ -8,16 +8,16 @@ import java.util.regex.Pattern;
  */
 public class Parser {
 
-
-    private static final String QUADRATIC_EQUATION = "^([+-]?\\d+|[+-]?\\d+\\.\\d+)x\\^2\\s([+-])\\s(\\d+|\\d+\\.\\d+)x\\s([+-])\\s(\\d+|\\d+\\.\\d+)\\s=\\s0$";
+    private static final String QUADRATIC_EQUATION = "^([+-]?\\d+|[+-]?\\d+\\.\\d+)x\\^2\\s([+-])\\s(\\d+|\\d+\\.\\d+)x"
+                                                        +"\\s([+-])\\s(\\d+|\\d+\\.\\d+)\\s=\\s0$";
     private static final String LINEAR_EQUATION = "^([+-]?\\d+|[+-]?\\d+\\.\\d+)x\\s([+-])\\s(\\d+|\\d+\\.\\d+)\\s=\\s0$";
 
-    public boolean parse(String s){
+    public int parse(String s){
         Pattern pattern = Pattern.compile(QUADRATIC_EQUATION);
         Matcher matcher = pattern.matcher(s);
 
         if (matcher.matches()){
-            return true;
+            return 1;
             /*
                 double a = Double.valueOf(matcher.group(1));
                 double b = Double.valueOf(matcher.group(2)+matcher.group(3));
@@ -28,14 +28,22 @@ public class Parser {
             pattern = Pattern.compile(LINEAR_EQUATION);
             matcher = pattern.matcher(s);
             if (matcher.matches()) {
-                return true;
+                return 0;
                 /*
                 double a = Double.valueOf(matcher.group(1));
                 double b = Double.valueOf(matcher.group(2) + matcher.group(3));
                 System.out.println("a=" + a + " b=" + b);*/
             }
         }
-        return false;
+        return -1;
+    }
+
+    public static String getQuadraticEquation() {
+        return QUADRATIC_EQUATION;
+    }
+
+    public static String getLinearEquation() {
+        return LINEAR_EQUATION;
     }
 
     public static void main(String[] args) {

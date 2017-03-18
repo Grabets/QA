@@ -9,11 +9,12 @@ import java.util.regex.Pattern;
  * Created by bogdan on 3/13/2017.
  */
 public class QuadraticEquation implements Equation {
-
+    private int id;
+    private String equation;
     private double a;
     private double b;
     private double c;
-    private String equation;
+
 
     @Override
     public boolean parse(String s) {
@@ -25,7 +26,6 @@ public class QuadraticEquation implements Equation {
             a = Double.valueOf(matcher.group(1));
             b = Double.valueOf(matcher.group(2) + matcher.group(3));
             c = Double.valueOf(matcher.group(4) + matcher.group(5));
-            //System.out.println("a=" + a + " b=" + b + " c=" + c);
             return true;
         } else
             return false;
@@ -57,7 +57,6 @@ public class QuadraticEquation implements Equation {
             {
                 return null;
             }
-
     }
 
     public void printRoots(){
@@ -68,4 +67,26 @@ public class QuadraticEquation implements Equation {
         return Math.pow(b,2)-4*a*c;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getEquation() {
+        return equation;
+    }
+
+    @Override
+    public String toString() {
+        return "QuadraticEquation{" +
+                "id=" + id +
+                ", equation='" + equation + '\'' +
+                ", a=" + a +
+                ", b=" + b +
+                ", c=" + c +
+                '}';
+    }
 }

@@ -8,5 +8,5 @@ import java.util.List;
 public interface Equation {
     boolean parse(String s);
     List<Double> getRoots();
-
+    String getEquation();
 }

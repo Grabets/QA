@@ -18,21 +18,12 @@ public class Parser {
 
         if (matcher.matches()){
             return 1;
-            /*
-                double a = Double.valueOf(matcher.group(1));
-                double b = Double.valueOf(matcher.group(2)+matcher.group(3));
-                double c = Double.valueOf(matcher.group(4)+matcher.group(5));
-                System.out.println("a=" + a + " b=" + b + " c=" + c);*/
         }
         else {
             pattern = Pattern.compile(LINEAR_EQUATION);
             matcher = pattern.matcher(s);
             if (matcher.matches()) {
                 return 0;
-                /*
-                double a = Double.valueOf(matcher.group(1));
-                double b = Double.valueOf(matcher.group(2) + matcher.group(3));
-                System.out.println("a=" + a + " b=" + b);*/
             }
         }
         return -1;
@@ -46,13 +37,4 @@ public class Parser {
         return LINEAR_EQUATION;
     }
 
-    public static void main(String[] args) {
-        Parser parser = new Parser();
-        System.out.println(parser.parse("-4.1212x^2 - 0x - 16 = 0"));
-
-        /*parse("-4.1212x^2 - 0x - 16 = 0");
-        parse("-0.25x + 16 = 0");
-        parse("-4.1212x^2 - 0x - 16 = 5");
-        parse("- 0x - 16 = 0");*/
-    }
 }

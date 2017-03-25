@@ -8,33 +8,24 @@ import java.util.regex.Pattern;
  */
 public class Parser {
 
-    private static final String QUADRATIC_EQUATION = "^([+-]?\\d+|[+-]?\\d+\\.\\d+)x\\^2\\s([+-])\\s(\\d+|\\d+\\.\\d+)x"
+    public static final String QUADRATIC_EQUATION = "^([+-]?\\d+|[+-]?\\d+\\.\\d+)x\\^2\\s([+-])\\s(\\d+|\\d+\\.\\d+)x"
                                                         +"\\s([+-])\\s(\\d+|\\d+\\.\\d+)\\s=\\s0$";
-    private static final String LINEAR_EQUATION = "^([+-]?\\d+|[+-]?\\d+\\.\\d+)x\\s([+-])\\s(\\d+|\\d+\\.\\d+)\\s=\\s0$";
+    public static final String LINEAR_EQUATION = "^([+-]?\\d+|[+-]?\\d+\\.\\d+)x\\s([+-])\\s(\\d+|\\d+\\.\\d+)\\s=\\s0$";
 
-    public int parse(String s){
+    public EquationType parse(String s){
         Pattern pattern = Pattern.compile(QUADRATIC_EQUATION);
         Matcher matcher = pattern.matcher(s);
 
         if (matcher.matches()){
-            return 1;
+            return EquationType.QUADRATIC;
         }
         else {
             pattern = Pattern.compile(LINEAR_EQUATION);
             matcher = pattern.matcher(s);
             if (matcher.matches()) {
-                return 0;
+                return EquationType.LINEAR;
             }
         }
-        return -1;
+        return null;
     }
-
-    public static String getQuadraticEquation() {
-        return QUADRATIC_EQUATION;
-    }
-
-    public static String getLinearEquation() {
-        return LINEAR_EQUATION;
-    }
-
 }

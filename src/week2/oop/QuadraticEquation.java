@@ -19,7 +19,7 @@ public class QuadraticEquation implements Equation {
     @Override
     public boolean parse(String s) {
         this.equation = s;
-        Pattern pattern = Pattern.compile(Parser.getQuadraticEquation());
+        Pattern pattern = Pattern.compile(Parser.QUADRATIC_EQUATION);
         Matcher matcher = pattern.matcher(s);
 
         if (matcher.matches()) {
@@ -49,7 +49,6 @@ public class QuadraticEquation implements Equation {
         else
             //for equal roots
             if (getDiscriminant()==0&&a!=0){
-                double[] quadRoot = {(0-b)/(2*a)};
                 return Arrays.asList(new Double[] {(0-b)/(2*a)});
             }
             //for negative discriminant

@@ -12,7 +12,7 @@ public class Main {
         storage.fillListOfRoots();
         storage.printMinAndMaxRoots();
         storage.printEquationWithMinMaxRoot();
-        storage.printEquationWithNegDesc();
+        storage.printEquationWithNegDiscriminant();
     }
 
 }

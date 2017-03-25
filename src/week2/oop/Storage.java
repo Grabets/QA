@@ -1,6 +1,8 @@
 package week2.oop;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -20,7 +22,7 @@ public class Storage {
         int count = 0;
         for (String s:
                 stringList ) {
-            if (parser.parse(s)==1)
+            if (parser.parse(s)==EquationType.QUADRATIC)
             {
                 QuadraticEquation quadraticEquation = new QuadraticEquation();
                 quadraticEquation.parse(s);
@@ -28,7 +30,7 @@ public class Storage {
                 equationList.add(quadraticEquation);
             }
             else
-            if (parser.parse(s)==0){
+            if (parser.parse(s)==EquationType.LINEAR){
                 LinearEquation linearEquation = new LinearEquation();
                 linearEquation.parse(s);
                 linearEquation.setId(count);
@@ -62,16 +64,7 @@ public class Storage {
     }
 
     private void sortListOfRoots(){
-        int length = listOfRoots.size();
-        for (int i = 0; i < length; i++) {
-            for (int j = 0; j < length-i-1; j++) {
-                if (listOfRoots.get(j)>listOfRoots.get(j+1)){
-                    double temp = listOfRoots.get(j+1);
-                    listOfRoots.set(j+1,listOfRoots.get(j));
-                    listOfRoots.set(j,temp);
-                }
-            }
-        }
+        Collections.sort(listOfRoots);
     }
 
     public void printListOfRoots(){
@@ -92,7 +85,7 @@ public class Storage {
         }
     }
 
-    public void printEquationWithNegDesc(){
+    public void printEquationWithNegDiscriminant(){
         List<Double> list;
         System.out.print("Quadratic equation with D<0: [");
         for (Equation e: equationList

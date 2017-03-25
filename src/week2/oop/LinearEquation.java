@@ -17,7 +17,7 @@ public class LinearEquation implements Equation{
     @Override
     public boolean parse(String s) {
         this.equation = s;
-        Pattern pattern = Pattern.compile(Parser.getLinearEquation());
+        Pattern pattern = Pattern.compile(Parser.LINEAR_EQUATION);
         Matcher matcher = pattern.matcher(s);
         if (matcher.matches()) {
              a = Double.valueOf(matcher.group(1));
@@ -31,7 +31,7 @@ public class LinearEquation implements Equation{
     @Override
     public List<Double> getRoots() {
         if (a!=0)
-            return Arrays.asList(new Double[] {(0-b)/a});
+            return Arrays.asList(new Double[] {-b/a});
         else
             return null;
     }

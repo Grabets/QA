@@ -91,7 +91,7 @@ public class Storage {
         for (Equation e: equationList
                 ) {
             list = e.getRoots();
-            if (list == null)
+            if (list == null && e instanceof QuadraticEquation)
                 System.out.print(e.getEquation()+" , ");
         }
         System.out.println("]");

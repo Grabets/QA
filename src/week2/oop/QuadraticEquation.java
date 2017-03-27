@@ -52,14 +52,19 @@ public class QuadraticEquation implements Equation {
                 return Arrays.asList(new Double[] {(0-b)/(2*a)});
             }
             //for negative discriminant
-            else
+        else
             {
                 return null;
             }
     }
 
-    public void printRoots(){
-        System.out.println(getRoots().toString());
+    public boolean printRoots(){
+        if (getRoots()!=null)
+        {
+            System.out.println(getRoots().toString());
+            return true;
+        }
+        return false;
     }
 
     private double getDiscriminant(){
@@ -76,6 +81,10 @@ public class QuadraticEquation implements Equation {
 
     public String getEquation() {
         return equation;
+    }
+
+    public List<Double> getCoefficients(){
+        return Arrays.asList(new Double[] {a,b,c});
     }
 
     @Override

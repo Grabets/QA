@@ -1,0 +1,35 @@
+[33mcommit 30512218bbc6be1def583c24f73f91d5a23c062a[m
+Author: Grabets <grabetsb@gmail.com>
+Date:   Fri Feb 24 22:43:04 2017 +0200
+
+    revision 2
+
+[33mcommit ec921752687471f2622a4b8b953247429ef4d046[m
+Author: Grabets <grabetsb@gmail.com>
+Date:   Thu Feb 23 00:37:08 2017 +0200
+
+    fix divizion by zero
+
+[33mcommit 3ad2c864f3ab8be9128e2cd27543d5c4853b487e[m
+Author: Grabets <grabetsb@gmail.com>
+Date:   Tue Feb 21 23:11:32 2017 +0200
+
+    bug input fix
+
+[33mcommit bf2347c83dbec3140a879f4502c4b4f8726388ee[m
+Author: Grabets <grabetsb@gmail.com>
+Date:   Tue Feb 21 00:59:24 2017 +0200
+
+    delete folder .idea
+
+[33mcommit fbaa103054ba05daeec25757db640e862e343c2e[m
+Author: Grabets <grabetsb@gmail.com>
+Date:   Tue Feb 21 00:57:00 2017 +0200
+
+    second
+
+[33mcommit 8bb634463bf3a08d2bc3e0122ae5988140bfcc13[m
+Author: Grabets <grabetsb@gmail.com>
+Date:   Tue Feb 21 00:00:30 2017 +0200
+
+    Initial commit with first task
